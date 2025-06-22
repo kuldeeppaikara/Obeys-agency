@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@font-face {
+    font-family: "Silk Serif";
+    src: url(./silkserif-lightitalic-webfont.ttf);
+}
+@font-face {
+    font-family: "Plain Light";
+    src: url(plain-light-webfont.ttf);
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Plain Light";
+    color: #fff;
+}
+
+html, body{
+    height: 100%;
+    width: 100%;
+}
+
+.montserrat {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+  }
+#loader{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 999;
+    background-color: #0b0b0b;
+    padding: 25vh 10vw;
+}
+.line{
+    /* background-color: red; */
+    height: fit-content;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 3vw;
+}
+#line1-pt1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5vw;
+}
+
+#line1-pt1 h5, #line1-pt1 h6{
+    font-size: 3vw;
+    font-weight: 100;
+    font-family: 'Silk Serif';
+}
+#line1-pt1 h5{
+    width: 5vw;
+    text-align: right;
+}
+.line h1{
+    font-size: 6vw;
+    text-transform: uppercase;
+
+}
+.line h2{
+    font-size: 4.7vw;
+    text-transform: uppercase;
+    opacity: 0;
+    /* animation-name: anime; */
+
+    animation-duration: 2s;
+    animation-delay: 0.4s;
+    animation-iteration-count: infinite;
+}
+@keyframes anime {
+    0%{
+        font-family: "Plain Light"; 
+        -webkit-text-stroke: 1px #fff;
+        font-weight: 500;
+        opacity: 1;
+        color :#fff
+    }
+    47%{
+        font-family: "Plain Light"; 
+        -webkit-text-stroke: 1px #fff;
+        font-weight: 500;
+        opacity: 0;
+        color :#fff
+    }
+    50%{
+        font-family: "Silk Serif";
+        -webkit-text-stroke: 1px #fff;
+        font-weight: 500;
+        opacity: 1;
+        color: transparent
+    }
+    100%{
+        font-family: "Silk Serif";
+        -webkit-text-stroke: 1px #fff;
+        font-weight: 500;
+        opacity: 0;
+        color: transparent
+    }
+    
+}
+
+
+#main{
+    position: relative;
+    background-color: #111;
+}
+#page1{
+    height: 100vh;
+    width: 100%;
+    background-color: #151515;
+}
