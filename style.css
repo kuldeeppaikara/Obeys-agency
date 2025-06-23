@@ -7,6 +7,10 @@
     font-family: "Plain Light";
     src: url(plain-light-webfont.ttf);
 }
+@font-face {
+    font-family: "Plain Regular";
+    src: url(plain-regular-webfont.ttf);
+}
 *{
     margin: 0;
     padding: 0;
@@ -19,7 +23,17 @@ html, body{
     height: 100%;
     width: 100%;
 }
-
+#cursor{
+    height: 2.6vw;
+    width: 2.6vw;
+    border-radius: 50%;
+    position: fixed;
+    /* background-color: #fff; */
+    border: 1px solid #fff;
+    mix-blend-mode: difference;
+    transform: translate(-50%, -50%);
+    z-index: 9;
+}
 .montserrat {
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
@@ -30,7 +44,7 @@ html, body{
     width: 100%;
     height: 100%;
     position: fixed;
-    z-index: 999;
+    z-index: 99;
     background-color: #0b0b0b;
     padding: 25vh 10vw;
 }
@@ -60,12 +74,12 @@ html, body{
     text-align: right;
 }
 .line h1{
-    font-size: 6vw;
+    font-size: 7vw;
     text-transform: uppercase;
 
 }
 .line h2{
-    font-size: 4.7vw;
+    font-size: 5vw;
     text-transform: uppercase;
     opacity: 0;
     /* animation-name: anime; */
@@ -115,4 +129,69 @@ html, body{
     height: 100vh;
     width: 100%;
     background-color: #151515;
+}
+#page1 #nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3.2vw 8.5vw;
+}
+#nav-pt2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3vw;
+}
+#nav-pt2 h4{
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.2vw;
+    font-weight: 500;
+    font-family: "Plain Light";
+}
+
+.line2{
+    /* background-color: red; */
+    width: 70%;
+    margin-left: 27%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 99;
+}
+.line2:nth-child(2){
+    margin-top: 15vh;
+    
+}
+.line2 h1 ,.line2 h2 , .line2 h3{
+    font-size: 7.5vw;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-family: "Plain Regular";
+    /* -webkit-text-stroke: 1px #111; */
+    line-height: 7.5vw;
+
+}
+#l3 h2:nth-child(2)::before{
+    content: "/";
+    /* position: absolute; */
+    width: 100%;
+    height: 100%;
+    /* background-color: #111; */
+    /* margin-right: 10vw; */
+    gap: 2vw;
+    z-index: -1;
+   
+}  
+.line2 h2:hover{
+    /* font-family: "Silk Serif"; */
+    -webkit-text-stroke: 2px #fff;
+    font-weight: 500;
+    color: transparent;
+}   
+.line2 h2:hover::before {
+    -webkit-text-stroke: initial;
+    color: #fff; /* Keep the original text color */
+    font-weight: initial;
 }
