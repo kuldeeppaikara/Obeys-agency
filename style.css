@@ -1,18 +1,18 @@
 @font-face {
   font-family: "plain light";
-  src: url(plain-light-webfont.ttf);
+  src: url(fonts/plain-light-webfont.ttf);
 }
 @font-face {
   font-family: "plain regular";
-  src: url(plain-regular-webfont.ttf);
+  src: url(fonts/plain-regular-webfont.ttf);
 }
 @font-face {
   font-family: "silk serif";
-  src: url(./silkserif-lightitalic-webfont.ttf);
+  src: url(fonts/silkserif-lightitalic-webfont.ttf);
 }
 @font-face {
   font-family: "silf serif regular";
-  src: url(silkserif-regularitalic-webfont.ttf);
+  src: url(fonts/silkserif-regularitalic-webfont.ttf);
 }
 * {
   margin: 0;
@@ -183,6 +183,23 @@ body {
   line-height: 7.5vw;
   z-index: 55;
 }
+#hero3 h2{
+  display: flex;
+}
+#hero3 h2 p {
+  font-weight: 500;
+  font-family: "plain regular";
+  text-decoration: underline;
+  transition: all ease 0.5s;
+}
+#hero3 h2 p:hover {
+  -webkit-text-stroke: 1px white;
+  color: transparent;
+  text-decoration: none;
+  transition: all ease 0.5s;
+}
+
+
 .mainContainer {
   width: 100%;
   display: flex;
@@ -192,11 +209,12 @@ body {
 }
 #flags {
   height: 30vw;
-  position: fixed;
-  z-index: 10;
-  /* top: 0;
-    left: 0; */
-  transform: translate(-50%, -50%);
+  /* position: fixed; */
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  transform: translate(100%, 100%);
   opacity: 0;
 }
 
@@ -207,11 +225,13 @@ body {
   left: 21%;
   font-family: "silk serif";
   font-size: 3.2vw;
+  z-index: 5;
 }
-.heroContent h2 u:hover {
+.heroContent h2 u:hover{
   -webkit-text-stroke: 1px white;
   color: transparent;
   font-weight: 400;
+  /* text-decoration: none; */
 }
 .heroContent h2 u {
   transition: all ease 0.3s;
@@ -221,6 +241,7 @@ body {
   width: 100%;
   height: 100vh;
   background: #151515;
+
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -240,19 +261,25 @@ body {
   width: 10vw;
   height: 10vw;
   border-radius: 50%;
-  position: absolute;
-  z-index: 5;
   background: #ffa63d;
   display: flex;
   align-items: center;
   justify-content: center;
-  top: 8%;
-  right: 10%;
-  transform: translate(-50%, -50%);
+  left: 75%;
+  top: 10%;
+  position: fixed;
+  /* transform: translate(-50%, -50%); */
+  transform: matrix(0 0 0 0 0 0);
+  z-index: 999;
+
 }
-#ideoCursor svg {
+#videoCursor svg {
   fill: #fff;
 }
+#videoCursor #pause{
+  display: none;
+}
+
 
 #videoContainer video {
   width: 100%;
@@ -361,10 +388,16 @@ body {
   font-weight: 500;
   padding: 0.5vw;
   text-align: center;
+  scale: 0;
+  transition: all ease 0.9s;
+  transition-delay: 0.1s ;
 }
 .circleDiv:hover .inCircle {
   scale: 1;
   transition: all ease 1s;
+}
+.circleDiv:hover p{
+  scale: 1;;
 }
 #c1 {
   margin-left: 5vw;
@@ -405,6 +438,7 @@ body {
   height: 100%;
   object-fit: cover;
 }
+
 .showCaseHolder .showCase:nth-child(even),
 .showCaseHolder .showCase:nth-child(even) .imgDiv {
   height: fit-content;

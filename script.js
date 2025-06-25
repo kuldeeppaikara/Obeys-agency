@@ -108,14 +108,102 @@ function loadingAnimation() {
 
 
 function cursorAnime() {
-  Shery.mouseFollower({
+  let mouse = Shery.mouseFollower({
     skew: true,
     ease: "cubic-bezier(0.23, 1, 0.320, 1)",
     duration: 0.5,
   });
   Shery.makeMagnet(".menus a");
+
+  let vidContainer = document.querySelector("#videoContainer");
+
+  function moveCursor(dets) {
+    const rect = vidContainer.getBoundingClientRect();
+    const scrollLeft =
+      window.pageXOffset || document.documentElement.scrollLeft;
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    gsap.to("#videoCursor", {
+      left: dets.clientX - rect.left - scrollLeft + 350,
+      top: dets.clientY - rect.top - scrollTop + 50,
+    });
+
+  }
+  vidContainer.addEventListener("mouseenter", () => {
+    isMouseInside = true;
+    vidContainer.addEventListener("mousemove", moveCursor);
+  });
+
+  vidContainer.addEventListener("mouseleave", () => {
+    isMouseInside = false;
+    vidContainer.removeEventListener("mousemove", moveCursor);
+    gsap.to("#videoCursor", {
+      left: "75%",
+      top: "10%"
+    });
+  })
+  document.addEventListener("mousemove", (dets) => {
+    if (isMouseInside) {
+      moveCursor(dets);
+    }
+  });
 }
 
+function vidPlay(){
+  let videoContainer = document.querySelector("#videoContainer");
+  let flag = 0;
+  videoContainer.addEventListener("click", function () {
+    let video = document.querySelector("#videoContainer video");
+    let img = document.querySelector("#videoContainer img");
+    let pauseIco = document.querySelector("#pause");
+    let playIco = document.querySelector("#play");
+
+    if (flag == 0) {
+      video.play();
+      img.style.opacity = "0";
+      pauseIco.style.display = "block";
+      playIco.style.display = "none";
+      gsap.to("#videoCursor", {
+        scale: "0.5",
+      });
+      flag = 1;
+    } else {
+      video.pause();
+      img.style.opacity = "1";
+      pauseIco.style.display = "none";
+      playIco.style.display = "block";
+      
+      gsap.to("#videoCursor", {
+        scale: "1",
+      });
+
+      flag = 0;
+    }
+  });
+
+}
+
+document.addEventListener("mousemove", (dets)=>{
+  gsap.to("#flags",{
+    x: dets.clientX - 170,
+    y: dets.clientY - 235,
+    // duration: 0.5,
+    // ease: "elastic.out(1, 0.3)",
+    scale: 1.1,
+    // yoyo: true,
+    // repeat: -1,
+    // transformOrigin: "center center"
+  })
+});
+document.querySelector("#hero3").addEventListener("mouseenter", ()=>{
+  gsap.to("#flags",{
+    opacity: 1,
+  })
+});
+document.querySelector("#hero3").addEventListener("mouseleave", () => {
+  gsap.to("#flags", {
+    opacity: 0,
+  });
+});
 
 
 gsapScrollTrigger();
@@ -126,9 +214,13 @@ function SheryAnime() {
   Shery.imageEffect(".imgDiv",{
     style:5,
     // debug: true,
-    config:{"a":{"value":2.52,"range":[0,30]},"b":{"value":0.4,"range":[-1,1]},"zindex":{"value":-9996999,"range":[-9999999,9999999]},"aspect":{"value":0.799994569354803},"ignoreShapeAspect":{"value":true},"shapePosition":{"value":{"x":0,"y":0}},"shapeScale":{"value":{"x":0.5,"y":0.5}},"shapeEdgeSoftness":{"value":0,"range":[0,0.5]},"shapeRadius":{"value":0,"range":[0,2]},"currentScroll":{"value":0},"scrollLerp":{"value":0.07},"gooey":{"value":true},"infiniteGooey":{"value":true},"growSize":{"value":4,"range":[1,15]},"durationOut":{"value":1.37,"range":[0.1,5]},"durationIn":{"value":1.52,"range":[0.1,5]},"displaceAmount":{"value":0.5},"masker":{"value":true},"maskVal":{"value":2.1,"range":[1,5]},"scrollType":{"value":0},"geoVertex":{"range":[1,64],"value":1},"noEffectGooey":{"value":true},"onMouse":{"value":1},"noise_speed":{"value":0.61,"range":[0,10]},"metaball":{"value":0.4,"range":[0,2]},"discard_threshold":{"value":0.6,"range":[0,1]},"antialias_threshold":{"value":0.03,"range":[0,0.1]},"noise_height":{"value":0.44,"range":[0,2]},"noise_scale":{"value":10,"range":[0,100]}},
+    config:{"a":{"value":3.21,"range":[0,30]},"b":{"value":0.75,"range":[-1,1]},"zindex":{"value":-9996999,"range":[-9999999,9999999]},"aspect":{"value":0.8928674977637355},"ignoreShapeAspect":{"value":true},"shapePosition":{"value":{"x":0,"y":0}},"shapeScale":{"value":{"x":0.5,"y":0.5}},"shapeEdgeSoftness":{"value":0,"range":[0,0.5]},"shapeRadius":{"value":0,"range":[0,2]},"currentScroll":{"value":0},"scrollLerp":{"value":0.07},"gooey":{"value":true},"infiniteGooey":{"value":true},"growSize":{"value":4,"range":[1,15]},"durationOut":{"value":1,"range":[0.1,5]},"durationIn":{"value":1.5,"range":[0.1,5]},"displaceAmount":{"value":0.5},"masker":{"value":true},"maskVal":{"value":1.46,"range":[1,5]},"scrollType":{"value":0},"geoVertex":{"range":[1,64],"value":1},"noEffectGooey":{"value":true},"onMouse":{"value":1},"noise_speed":{"value":0.53,"range":[0,10]},"metaball":{"value":0.43,"range":[0,2]},"discard_threshold":{"value":0.68,"range":[0,1]},"antialias_threshold":{"value":0.05,"range":[0,0.1]},"noise_height":{"value":0.4,"range":[0,2]},"noise_scale":{"value":9.92,"range":[0,100]}},
+
+    // config:{"a":{"value":2.52,"range":[0,30]},"b":{"value":0.4,"range":[-1,1]},"zindex":{"value":-9996999,"range":[-9999999,9999999]},"aspect":{"value":0.799994569354803},"ignoreShapeAspect":{"value":true},"shapePosition":{"value":{"x":0,"y":0}},"shapeScale":{"value":{"x":0.5,"y":0.5}},"shapeEdgeSoftness":{"value":0,"range":[0,0.5]},"shapeRadius":{"value":0,"range":[0,2]},"currentScroll":{"value":0},"scrollLerp":{"value":0.07},"gooey":{"value":true},"infiniteGooey":{"value":true},"growSize":{"value":4,"range":[1,15]},"durationOut":{"value":1.37,"range":[0.1,5]},"durationIn":{"value":1.52,"range":[0.1,5]},"displaceAmount":{"value":0.5},"masker":{"value":true},"maskVal":{"value":2.1,"range":[1,5]},"scrollType":{"value":0},"geoVertex":{"range":[1,64],"value":1},"noEffectGooey":{"value":true},"onMouse":{"value":1},"noise_speed":{"value":0.61,"range":[0,10]},"metaball":{"value":0.4,"range":[0,2]},"discard_threshold":{"value":0.6,"range":[0,1]},"antialias_threshold":{"value":0.03,"range":[0,0.1]},"noise_height":{"value":0.44,"range":[0,2]},"noise_scale":{"value":10,"range":[0,100]}},
     
     gooey: true,
   }) 
 }
 SheryAnime();
+
+vidPlay();
