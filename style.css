@@ -27,10 +27,12 @@ body {
   height: 100%;
   width: 100%;
 }
+
 #main {
   position: relative;
   background-color: #151515;
 }
+
 .mousefollower {
   scale: 2;
   border: 10px solid white;
@@ -41,6 +43,7 @@ body {
   z-index: 99999 !important;
   pointer-events: none;
 }
+
 #loader {
   width: 100%;
   height: 100vh;
@@ -57,12 +60,17 @@ body {
   display: flex;
   gap: 2.8vw;
 }
-.timer {
+.timer{
   display: flex;
   height: 100%;
   width: 20vw;
   justify-content: flex-end;
   align-items: start;
+}
+#time{
+  display: flex;
+  align-items: end;
+  justify-content: end;
 }
 .timer h2 {
   font-size: 4vw;
@@ -134,11 +142,6 @@ body {
   padding: 4.18vw 5.18vw;
   justify-content: space-between;
 }
-.heroContainer nav {
-  display: flex;
-  padding: 4.18vw 5.18vw;
-  justify-content: space-between;
-}
 .svgs {
   display: flex;
   align-items: center;
@@ -151,7 +154,7 @@ body {
   justify-content: space-between;
 }
 .logos p {
-  line-height: 1.2vw;
+  line-height: 1.5vw;
 }
 .menus {
   display: flex;
@@ -198,8 +201,6 @@ body {
   text-decoration: none;
   transition: all ease 0.5s;
 }
-
-
 .mainContainer {
   width: 100%;
   display: flex;
@@ -217,7 +218,6 @@ body {
   transform: translate(100%, 100%);
   opacity: 0;
 }
-
 .mainContainer::before {
   content: "01";
   position: absolute;
@@ -236,6 +236,8 @@ body {
 .heroContent h2 u {
   transition: all ease 0.3s;
 }
+
+/* Video Section */
 
 #videoSection {
   width: 100%;
@@ -279,13 +281,13 @@ body {
 #videoCursor #pause{
   display: none;
 }
-
-
 #videoContainer video {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
+
+/* Projects Section */
 
 #ourProjects {
   min-height: 100vh;
@@ -366,7 +368,6 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
 .inCircle {
   width: 100%;
   height: 100%;
@@ -424,7 +425,6 @@ body {
   top: 0;
   left: 56%;
 }
-
 .imgDiv {
   width: 25vw;
   height: 28vw;
@@ -444,7 +444,6 @@ body {
   height: fit-content;
   width: 30vw;
 }
-
 .showCaseHolder .showCase:nth-child(5),
 .showCaseHolder .showCase:nth-child(5) .imgDiv {
   height: fit-content;
@@ -473,9 +472,6 @@ body {
 .showCaseHolder .showCase:nth-child(7) h3{
   text-transform: capitalize;
 }
-
-
-
 #allProject {
   width: 25vw;
   height: 25vw;
@@ -500,6 +496,8 @@ body {
   font-weight: 400;
 }
 
+/* About Obys*/
+
 #about {
   align-items: start;
   min-height: 228vh;
@@ -522,13 +520,11 @@ body {
   margin-right: 8vw;
   position: relative;
 }
-
 #aboutContent h3 {
   font-size: 7.5vw;
   letter-spacing: 0.1vw;
   font-weight: 500;
 }
-
 .underline {
   width: 100%;
   border: 1px solid white;
@@ -583,6 +579,7 @@ body {
   /* text-align: end; */
 }
 
+/* Work with -- Marque Animation*/
 #worksWith {
   min-height: fit-content;
   width: 100%;
@@ -637,7 +634,6 @@ body {
   margin-right: 16px;
   font-family: "Silk Serif";
 }
-
 .moving-elem-rev h1 {
   animation-direction: reverse;
 }
@@ -649,6 +645,8 @@ body {
     transform: translateX(calc(-100% - 20px));
   }
 }
+
+/* Footer */
 
 #footer {
   width: 100%;
@@ -667,8 +665,9 @@ body {
   position: relative;
 }
 .footerTop {
+  height: 10vw;
   display: flex;
-  align-items: start;
+  align-items: center;
   justify-content: start;
   gap: 4vw;
 }
@@ -676,10 +675,19 @@ body {
   font-size: 7vw;
   font-weight: 600;
   text-transform: uppercase;
-  font-family: "plain light";
-  margin-bottom: 3.5vw;
 }
-
+.footerTop h1 #plain{
+  font-family: "plain light";
+  /* transition: all ease 3s; */
+}
+.footerTop h1 #silk{
+  /* opacity: 0; */
+  display: none;
+  font-family: "silk serif";
+  color: transparent;
+  -webkit-text-stroke: 1px #fff;
+  /* transition: all ease 3s; */
+}
 .footerContainer::before {
   content: "04";
   position: absolute;
@@ -689,14 +697,13 @@ body {
   top: 2%;
   left: -12%;
 }
-
 #footer svg {
   width: 8vw;
   height: 8vw;
   fill: #fff;
   margin-right: 1vw;
+  /* margin-top: 1vw; */
 }
-
 .linksSection {
   width: 100%;
   height: 40vh;
@@ -719,7 +726,6 @@ body {
   font-size: 1vw;
   font-weight: 600;
 }
-
 .box ul li,
 .box p {
   /* margin-top: 0; */
@@ -727,7 +733,356 @@ body {
   font-weight: 300;
   line-height: 1.9vw;
 }
-
 #footer h6 {
   font-size: 1vw;
+}
+
+
+/* media queries */
+
+@media (max-width: 1024px) {
+
+  /* Only Project section Changes */
+.showCaseHolder {
+  width: 100%;
+  padding: 4vw;
+  display: grid;
+  grid-template-columns:2fr 2fr;
+}
+.circleDiv {
+  display: none;
+}
+.showCaseHolder .showCase:nth-child(even),
+.showCaseHolder .showCase:nth-child(even) .imgDiv {
+  height: fit-content;
+  width: 45vw;
+}
+.showCaseHolder .showCase:nth-child(odd),
+.showCaseHolder .showCase:nth-child(odd) .imgDiv {
+  height: fit-content;
+  width: 45vw;
+}
+.showCaseHolder .showCase:nth-child(odd) {
+  margin-top: 2vw;
+}
+.showCaseHolder .showCase:nth-child(even) {
+  margin-top: 2vw;
+}  
+}
+
+@media (max-width: 768px) {
+
+
+  /* Loader */
+#loader {
+  height: 100vh;
+  padding: 34vh 5vw;
+}
+.loaderContent {
+  flex-direction: column;
+}
+.timer {
+  width: 22vw;
+  justify-content: flex-start;
+}
+.timer h2 {
+  font-size: 5vw;
+}
+.blink {
+  padding: 1vw;
+  font-size: 4vw;
+  align-items: start;
+  height: 10vw;
+}
+.waiting {
+  overflow: hidden;
+  margin-left: 2%;
+  margin-top: 3vw;
+}
+.waiting h3 {
+  font-size: 2.5vw;
+}
+
+  /* page1 */
+.heroContainer {
+  margin-top: 0;
+  height: 70vh;
+  background: #151515;
+  margin-bottom: 2vw;
+  padding-top: 1vw;
+}
+nav{
+  width: 100vw;
+  /* position: fixed; */
+  position: absolute;
+  top: 0;
+  margin-top: 0;
+  z-index: 1000;
+}
+.svgs {
+  width: 100vw;
+  justify-content: space-between;
+  /* position: fixed; */
+}
+.logos {
+  width: 100%;
+  /* position: fixed; */
+
+}
+.logos p {
+  display: none;
+}
+.menus {
+  display: none;
+}
+.heroContent {
+  margin-left: 5%;
+}
+.heroContent h2 {
+  font-size: 9vw;
+  margin: 1vw;
+}
+.mainContainer {
+  margin-top: 30vw;
+}
+#flags {
+  top: 30%;
+  left: 20%;
+}
+.mainContainer::before {
+  top: -17%;
+  left: 6%;
+  font-size: 5vw;
+}
+
+/*Video section */
+#videoSection {
+  margin-top: 10vw;
+  width: 100%;
+  height: 70vh;
+  display: flex;
+  align-items: start;
+  justify-content: flex-start;
+  /* background-color: red; */
+}
+#videoContainer {
+  padding-top: 10vw;
+  width: 100vw;
+  height: 60vh;
+  position: relative;
+}
+#videoCursor {
+  width: 15vw;
+  height: 15vw;
+  left: 45%;
+  top: 40%;
+}
+#videoContainer video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* about project*/
+#ourProjects {
+  margin-top: 10vw;
+  padding-top: 0vw;
+}
+.projectTitle::before {
+  top: -30%;
+  left: 1%;
+  font-size: 4vw;
+}
+.projectTitle {
+  width: 90vw;
+  margin-left: 5vw;
+}
+.projectTitle h1 {
+  font-size: 8vw;
+  margin-bottom: 3.5vw;
+}
+.showCaseHolder {
+  width: 100%;
+  padding: 4.5vw;
+  display: grid;
+  grid-template-columns: 1fr;
+
+}
+.showCase {
+  width: 80vw;
+  margin-top: 2vw;
+}
+.showCase h3 {
+  font-size: 3vw;
+}
+.imgInfo {
+  width: 100%;
+}
+.imgInfo h4 {
+  font-size: 2vw;
+}
+.circleDiv {
+  display: none;
+}
+.showCaseHolder .showCase:nth-child(even),
+.showCaseHolder .showCase:nth-child(even) .imgDiv {
+  height: fit-content;
+  width: 90vw;
+}
+.showCaseHolder .showCase:nth-child(odd),
+.showCaseHolder .showCase:nth-child(odd) .imgDiv {
+  height: fit-content;
+  width: 90vw;
+}
+.showCaseHolder .showCase:nth-child(odd) {
+  margin-top: 3vw;
+}
+.showCaseHolder .showCase:nth-child(even) {
+  margin-top: 3vw;
+}
+#allProject {
+  width: 40vw;
+  height: 40vw;
+  font-size: 5vw;
+  top: 10%;
+  left: 30%;
+}
+#allProject:hover {
+  scale: 0.8;
+}
+
+/* About Obys*/
+#about {
+  padding: 4vw;
+  justify-content: flex-start;
+}
+#aboutContent::before {
+  top: -3%;
+  left: 0;
+  font-size: 4vw;
+}
+#aboutContent {
+  /* background-color: red; */
+  width: 95vw;
+  min-height: 70vh;
+  margin-right: 0vw;
+  position: relative;
+}
+#aboutContent h3 {
+  font-size: 8vw;
+}
+#aboutContent .mainText {
+  font-size: 3.3vw;
+  width: 94%;
+}
+.imgSections {
+  width: 100%;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: space-between;
+  gap: 2vw;
+  margin-top: 5vw;
+}
+.imgSections img {
+  width: 100%;
+  height: 80vh;
+  object-fit: cover;
+}
+.texts p {
+  width: 40%;
+  font-size: 2vw;
+  margin: 0 0 2vw 0;
+}
+.table {
+  width: 100%;
+  height: 60vh;
+  background: #3f7df4;
+  padding: 2.3vw;
+  position: absolute;
+  right: 0%;
+  bottom: -39%;
+}
+.rows h4 {
+  font-size: 2.3vw;
+  font-weight: 500;
+}
+.rows p {
+  font-size: 1.8vw;
+  /* text-align: end; */
+}
+
+/* Works with */
+#worksWith {
+  margin-top: 0vw;
+  width: 100%;
+  display: flex;
+  align-items: start;
+}
+.workContent {
+  width: 100vw;
+  padding: 5vw;
+  margin-right: 0vw;
+}
+.workContent h6 {
+  font-size: 2vw;
+}
+.moving-elem h1,
+.moving-elem-rev h1 {
+  font-size: 11vw;
+  font-weight: 600;
+}
+.moving-elem span,
+.moving-elem-rev span {
+  font-size: 11vw;
+  font-weight: 600;
+}
+
+/* footer */
+#footer {
+  margin-top: 40vh;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: start;
+  padding: 4vw;
+}
+.footerContainer {
+  width: 100%;
+  margin-right: 0vw;
+}
+.footerTop {
+  height: 15vw;
+}
+.footerContainer h1 {
+  font-size: 8vw;
+}
+.footerContainer::before {
+  font-size: 4.8vw;
+  top: -3%;
+  left: 0%;
+}
+.linksSection {
+  height: fit-content;
+  flex-direction: column;
+  margin-top: 7vw;
+  padding: 2vw 0;
+}
+.box {
+  gap: 2vw;
+  margin-top: 3vw;
+  margin-bottom: 5vw;
+}
+.box h5 {
+  font-size: 2.3vw;
+}
+.box ul li,
+.box p {
+  /* margin-top: 0; */
+  font-size: 3vw;
+  line-height: 3.1vw;
+}
+#footer h6 {
+  margin-top: 8vw;
+  font-size: 2vw;
+}
 }

@@ -1,5 +1,4 @@
 
-
 function gsapScrollTrigger() {
   gsap.registerPlugin(ScrollTrigger);
 
@@ -41,6 +40,7 @@ function gsapScrollTrigger() {
 
   ScrollTrigger.refresh();
 }
+
 function loadingAnimation() {
   let tl = gsap.timeline();
   tl.from(".loaderContent h1", {
@@ -88,10 +88,12 @@ function loadingAnimation() {
   tl.to("#loader", {
     display: "none",
   });
-  tl.from(".heroContainer", {
+  
+  tl.from(".heroContainer, #videoSection", {
     y: 1200,
     duration: 1,
   });
+  
 
   tl.from("nav", {
     opacity: 0,
@@ -104,8 +106,6 @@ function loadingAnimation() {
     stagger: 0.1,
   },"-=0.8");
 }
-
-
 
 function cursorAnime() {
   let mouse = Shery.mouseFollower({
@@ -148,6 +148,26 @@ function cursorAnime() {
   });
 }
 
+function flagAnime() {
+  document.addEventListener("mousemove", (dets) => {
+    gsap.to("#flags", {
+      x: dets.clientX - 170,
+      y: dets.clientY - 235,
+      scale: 1.1,
+    });
+  });
+  document.querySelector("#hero3").addEventListener("mouseenter", () => {
+    gsap.to("#flags", {
+      opacity: 1,
+    });
+  });
+  document.querySelector("#hero3").addEventListener("mouseleave", () => {
+    gsap.to("#flags", {
+      opacity: 0,
+    });
+  });
+}
+
 function vidPlay(){
   let videoContainer = document.querySelector("#videoContainer");
   let flag = 0;
@@ -182,45 +202,173 @@ function vidPlay(){
 
 }
 
-document.addEventListener("mousemove", (dets)=>{
-  gsap.to("#flags",{
-    x: dets.clientX - 170,
-    y: dets.clientY - 235,
-    // duration: 0.5,
-    // ease: "elastic.out(1, 0.3)",
-    scale: 1.1,
-    // yoyo: true,
-    // repeat: -1,
-    // transformOrigin: "center center"
-  })
-});
-document.querySelector("#hero3").addEventListener("mouseenter", ()=>{
-  gsap.to("#flags",{
-    opacity: 1,
-  })
-});
-document.querySelector("#hero3").addEventListener("mouseleave", () => {
-  gsap.to("#flags", {
-    opacity: 0,
+function SheryAnime() {
+  Shery.imageEffect(".imgDiv", {
+    style: 5,
+    // debug: true,
+    config: {
+      a: { value: 3.21, range: [0, 30] },
+      b: { value: 0.75, range: [-1, 1] },
+      zindex: { value: -9996999, range: [-9999999, 9999999] },
+      aspect: { value: 0.8928674977637355 },
+      ignoreShapeAspect: { value: true },
+      shapePosition: { value: { x: 0, y: 0 } },
+      shapeScale: { value: { x: 0.5, y: 0.5 } },
+      shapeEdgeSoftness: { value: 0, range: [0, 0.5] },
+      shapeRadius: { value: 0, range: [0, 2] },
+      currentScroll: { value: 0 },
+      scrollLerp: { value: 0.07 },
+      gooey: { value: true },
+      infiniteGooey: { value: true },
+      growSize: { value: 4, range: [1, 15] },
+      durationOut: { value: 1, range: [0.1, 5] },
+      durationIn: { value: 1.5, range: [0.1, 5] },
+      displaceAmount: { value: 0.5 },
+      masker: { value: true },
+      maskVal: { value: 1.46, range: [1, 5] },
+      scrollType: { value: 0 },
+      geoVertex: { range: [1, 64], value: 1 },
+      noEffectGooey: { value: true },
+      onMouse: { value: 1 },
+      noise_speed: { value: 0.53, range: [0, 10] },
+      metaball: { value: 0.43, range: [0, 2] },
+      discard_threshold: { value: 0.68, range: [0, 1] },
+      antialias_threshold: { value: 0.05, range: [0, 0.1] },
+      noise_height: { value: 0.4, range: [0, 2] },
+      noise_scale: { value: 9.92, range: [0, 100] },
+    },
+    gooey: true,
   });
-});
-
-
+}
+// function Calls
 gsapScrollTrigger();
 loadingAnimation();
 cursorAnime();
-
-function SheryAnime() {
-  Shery.imageEffect(".imgDiv",{
-    style:5,
-    // debug: true,
-    config:{"a":{"value":3.21,"range":[0,30]},"b":{"value":0.75,"range":[-1,1]},"zindex":{"value":-9996999,"range":[-9999999,9999999]},"aspect":{"value":0.8928674977637355},"ignoreShapeAspect":{"value":true},"shapePosition":{"value":{"x":0,"y":0}},"shapeScale":{"value":{"x":0.5,"y":0.5}},"shapeEdgeSoftness":{"value":0,"range":[0,0.5]},"shapeRadius":{"value":0,"range":[0,2]},"currentScroll":{"value":0},"scrollLerp":{"value":0.07},"gooey":{"value":true},"infiniteGooey":{"value":true},"growSize":{"value":4,"range":[1,15]},"durationOut":{"value":1,"range":[0.1,5]},"durationIn":{"value":1.5,"range":[0.1,5]},"displaceAmount":{"value":0.5},"masker":{"value":true},"maskVal":{"value":1.46,"range":[1,5]},"scrollType":{"value":0},"geoVertex":{"range":[1,64],"value":1},"noEffectGooey":{"value":true},"onMouse":{"value":1},"noise_speed":{"value":0.53,"range":[0,10]},"metaball":{"value":0.43,"range":[0,2]},"discard_threshold":{"value":0.68,"range":[0,1]},"antialias_threshold":{"value":0.05,"range":[0,0.1]},"noise_height":{"value":0.4,"range":[0,2]},"noise_scale":{"value":9.92,"range":[0,100]}},
-
-    // config:{"a":{"value":2.52,"range":[0,30]},"b":{"value":0.4,"range":[-1,1]},"zindex":{"value":-9996999,"range":[-9999999,9999999]},"aspect":{"value":0.799994569354803},"ignoreShapeAspect":{"value":true},"shapePosition":{"value":{"x":0,"y":0}},"shapeScale":{"value":{"x":0.5,"y":0.5}},"shapeEdgeSoftness":{"value":0,"range":[0,0.5]},"shapeRadius":{"value":0,"range":[0,2]},"currentScroll":{"value":0},"scrollLerp":{"value":0.07},"gooey":{"value":true},"infiniteGooey":{"value":true},"growSize":{"value":4,"range":[1,15]},"durationOut":{"value":1.37,"range":[0.1,5]},"durationIn":{"value":1.52,"range":[0.1,5]},"displaceAmount":{"value":0.5},"masker":{"value":true},"maskVal":{"value":2.1,"range":[1,5]},"scrollType":{"value":0},"geoVertex":{"range":[1,64],"value":1},"noEffectGooey":{"value":true},"onMouse":{"value":1},"noise_speed":{"value":0.61,"range":[0,10]},"metaball":{"value":0.4,"range":[0,2]},"discard_threshold":{"value":0.6,"range":[0,1]},"antialias_threshold":{"value":0.03,"range":[0,0.1]},"noise_height":{"value":0.44,"range":[0,2]},"noise_scale":{"value":10,"range":[0,100]}},
-    
-    gooey: true,
-  }) 
-}
+flagAnime();
+vidPlay();
 SheryAnime();
 
-vidPlay();
+// Addition Animations to be added 
+
+// document.querySelector(".footerTop h1").addEventListener("mouseenter", () =>{
+//   let plain = document.querySelector(".footerTop #plain");
+//   let silk = document.querySelector(".footerTop #silk");
+//   plain.style.display = "none",
+//   silk.style.display = "block",
+//   gsap.to(".footerTop #plain", {
+//     // opacity: 0,
+//     ease: "elastic.out(1, 0.3)",
+//     duration: 0.5,
+//     ease: "elastic.out(1, 0.3)",
+//     onStart: function () {
+//       $(".footerTop #plain").textillate({
+//         // in: { effect: "fadeIn" },
+//         outEffects: ["fadeOut"],
+//       });
+//     }
+//   });
+//   gsap.to(".footerTop #silk", {
+//     // opacity: 0,
+//     ease: "elastic.out(1, 0.3)",
+//     duration: 0.5,
+//     ease: "elastic.out(1, 0.3)",
+//     onStart: function () {
+//       $(".footerTop #plain").textillate({
+//         in: { effect: "fadeIn" },
+//         // outEffects: ["fadeOut"],
+//       });
+//     },
+//   });
+// } )
+// document.querySelector(".footerTop h1").addEventListener("mouseleave", () => {
+//   let plain = document.querySelector(".footerTop #plain");
+//   let silk = document.querySelector(".footerTop #silk");
+//   (plain.style.display = "block"),
+//     (silk.style.display = "none"),
+//     gsap.to(".footerTop #plain", {
+//       // opacity: 0,
+//       ease: "elastic.out(1, 0.3)",
+//       duration: 0.5,
+//       ease: "elastic.out(1, 0.3)",
+//       onStart: function () {
+//         $(".footerTop #plain").textillate({
+//           in: { effect: "fadeIn" },
+//           // outEffects: ["fadeOut"],
+//         });
+//       },
+//     });
+//   gsap.to(".footerTop #silk", {
+//     // opacity: 0,
+//     ease: "elastic.out(1, 0.3)",
+//     duration: 0.5,
+//     ease: "elastic.out(1, 0.3)",
+//     onStart: function () {
+//       $(".footerTop #plain").textillate({
+//         // in: { effect: "fadeIn" },
+//         outEffects: ["fadeOut"],
+//       });
+//     },
+//   });
+// });
+
+
+// document.querySelector(".footerTop h1").addEventListener("mouseenter", () => {
+//   let plain = document.querySelector(".footerTop h1 #plain");
+//   let silk = document.querySelector(".footerTop h1 #silk");
+
+//   gsap.to(plain, {
+//     opacity: 0,
+//     duration: 0.3,
+//     ease: "power2.out",
+//     onComplete: function () {
+//       plain.style.display = "none";
+//       silk.style.display = "block";
+//       gsap.fromTo(
+//         silk,
+//         { opacity: 0 },
+//         {
+//           opacity: 1,
+//           duration: 0.3,
+//           ease: "power2.in",
+//           onStart: function () {
+//             $(silk).textillate({
+//               in: { effect: "fadeIn" },
+//               out: { effect: "fadeOut" },
+//             });
+//           },
+//         }
+//       );
+//     },
+//   });
+// });
+
+// document.querySelector(".footerTop h1").addEventListener("mouseleave", () => {
+//   let plain = document.querySelector(".footerTop h1 #plain");
+//   let silk = document.querySelector(".footerTop h1 #silk");
+
+//   gsap.to(silk, {
+//     opacity: 0,
+//     duration: 0.3,
+//     ease: "power2.out",
+//     onComplete: function () {
+//       silk.style.display = "none";
+//       plain.style.display = "block";
+//       gsap.fromTo(
+//         plain,
+//         { opacity: 0 },
+//         {
+//           opacity: 1,
+//           duration: 0.3,
+//           ease: "power2.in",
+//           onStart: function () {
+//             $(plain).textillate({
+//               in: { effect: "fadeIn" },
+//               out: { effect: "fadeOut" },
+//             });
+//           },
+//         }
+//       );
+//     },
+//   });
+// });
+
